@@ -1,0 +1,31 @@
+version: '3'
+
+volumes:
+  postgres_data:
+    driver: local
+
+services:
+  postgres:
+      image: postgres:latest
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      environment:
+        POSTGRES_DB: YOUR_OWN_KEYCLOAK_DB_NAME
+        POSTGRES_USER: YOUR_OWN_KEYCLOAK_DB_USERNAME
+        POSTGRES_PASSWORD: YOUR_OWN_KEYCLOAK_DB_PASSWORD
+  keycloak:
+      image: quay.io/keycloak/keycloak:26.1.4
+      environment:
+        DB_VENDOR: POSTGRES
+        DB_ADDR: postgres
+        DB_DATABASE: YOUR_OWN_KEYCLOAK_DB_NAME
+        DB_USER: YOUR_OWN_KEYCLOAK_DB_USERNAME
+        DB_SCHEMA: public
+        DB_PASSWORD: YOUR_OWN_KEYCLOAK_DB_PASSWORD
+        KC_BOOTSTRAP_ADMIN_USERNAME: YOUR_OWN_KEYCLOAK_DEFAULT_ADMIN_USERNAME
+        KC_BOOTSTRAP_ADMIN_PASSWORD: YOUR_OWN_KEYCLOAK_DEFAULT_ADMIN_PASSWORD
+      ports:
+        - 8080:8080
+      command: ["start-dev"]
+      depends_on:
+        - postgres

@@ -9,7 +9,7 @@ This repository provides a `docker-compose.yml` file to set up Keycloak with a P
 Ensure the following dependencies are installed on your system:
 
 - **Docker** (latest version recommended)
-- **Docker Compose**
+- **Docker Compose** (If using standalone Docker installations)
 
 ## Running Keycloak with PostgreSQL
 
@@ -117,4 +117,3 @@ docker-compose down
 ## License
 
 This project is licensed under [MIT License](LICENSE).
-

@@ -46,7 +46,7 @@ Ensure the following dependencies are installed on your system:
    docker-compose up
    ```
 
-5. Wait until you see the below INFO log message:\
+5. Wait until you see the below INFO log message:
    ```
    Keycloak 26.1.4 on JVM (powered by Quarkus 3.15.3.1) started in 5.583s. Listening on: http://0.0.0.0:8080
    ```
